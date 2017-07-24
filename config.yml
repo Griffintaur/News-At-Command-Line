@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+#"""
+#Created on Mon Jul 24 16:13:25 2017
+
+#@author: 310247467
+#"""
+
+# -*- coding: utf-8 -*-
+
+#Created on  Jul 20 11:43:52 2016
+
+#@author: Ankit Singh
+
+
+WebsiteSupported:
+   # - IndianExpress
+   # - TheHindu
+    - the-huffington-post
+   # - The WashingtonPost
+   # - TheNewyorkTimes
+
+#No of posts to be displayed in the one go    
+Limit: 10
+
+Apikey: bda5818cc2af461e98330ccdf6fb9cbe
+
+    
