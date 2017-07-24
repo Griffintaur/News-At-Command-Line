@@ -23,10 +23,14 @@ class HuffingtonPost(Extractor):
 
 class NYT(Extractor):
     def ExtractionAlgo(self,text):
+        soup = BeautifulSoup(text, 'html.parser')
+        print soup.title.string
         pass
         
 class Guardian(Extractor):
     def ExtractionAlgo(self,text):
+        soup = BeautifulSoup(text, 'html.parser')
+        print soup.title.string
         pass
         
 

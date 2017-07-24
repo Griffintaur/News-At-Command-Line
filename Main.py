@@ -35,8 +35,8 @@ def App():
         print ("That's not a valid article number")
     if (articleNumber >= len(Articles)):
         print "please select the index no less than "+ str(len(Articles))
-    
-    extr=ExtractMainContent('the-huffington-post',Articles[articleNumber][2])
+    #print Articles[articleNumber][2]
+    extr=ExtractMainContent('the-huffington-post',Articles[2][2])
     extr.Extract()
                 
 

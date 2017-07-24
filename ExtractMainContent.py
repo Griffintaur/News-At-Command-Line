@@ -6,7 +6,7 @@ Created on Mon Jul 24 21:42:05 2017
 """
 import requests
 from configReader import ConfigurationReader
-from Extractor import * 
+from Extractor import *
 
 
 class ExtractMainContent(object):
@@ -16,14 +16,14 @@ class ExtractMainContent(object):
         websites=ConfigurationReader().GetWebsiteSupported()
         self.Mapping={}
         for index,website in enumerate(websites):
-            self.Mapping[website]=extractorlist[index]
+            self.Mapping[website]=self.extractorlist[index]
         self.Source=source
         self.url=articleurl
         
         
-    def DownloadContent():
+    def DownloadContent(self):
         req=requests.get(self.url)
-        return req.text()
+        return req.text
     
     def AddExtractorList(self,extractor):
         self.extractorlist.append(extractor)
