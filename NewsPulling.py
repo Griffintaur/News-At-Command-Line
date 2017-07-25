@@ -40,7 +40,8 @@ class NewsPulling(object):
             title=article['title']
             Article_url=article['url']
             DateofPublication=article['publishedAt']
-            FilteredArticles.append([description,title,Article_url,DateofPublication])
+            Author=article['author']
+            FilteredArticles.append([description,title,Article_url,DateofPublication,Author])
         return FilteredArticles
             
         #jsondict=json.load(req.json())
@@ -48,12 +49,19 @@ class NewsPulling(object):
         
     def BeautifyArticles(self):
         self.Articles=self.JsonRead()
+        print "=================STORIES=================================="
         for i in xrange(len(self.Articles)):
-            print "[" +str(i) +"]"
-            print "\t"+self.Articles[i][1] +"\n"
-            print "\t"+self.Articles[i][0] +"\n"
-            #print "\t"+self.Articles[i][2]
-            print "\t"+self.Articles[i][3] +"\n"
+            print "[" +str(i) +"]",
+           # print(sequence,end='') used for python 3.x
+            if self.Articles[i][1] is not None:
+                print "\t"+self.Articles[i][1]
+            if self.Articles[i][0] is not None:
+                print "\t"+self.Articles[i][0]
+            if self.Articles[i][4] is not None:
+                print "\t"+self.Articles[i][4]
+            if self.Articles[i][3] is not None:
+                print "\t"+self.Articles[i][3]+"\n"
+        print "==========================================================="
         return self.Articles 
     
         

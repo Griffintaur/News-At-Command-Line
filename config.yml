@@ -16,6 +16,12 @@ WebsiteSupported:
    # - IndianExpress
    # - TheHindu
     - the-huffington-post
+    - the-new-york-times
+    - bbc-news
+    - bloomberg
+    - the-guardian-uk
+    - the-hindu
+    - the-times-of-india
    # - The WashingtonPost
    # - TheNewyorkTimes
 
