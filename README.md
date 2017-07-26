@@ -1,5 +1,5 @@
 # News at the Command line
-### Want to be keep updated without visit the news portals every now and then
+### Want to be kept updated without visiting the news portals every now and then
 
  Now you don't need to visit each news portal website separately to read their articles. Just use the tool and read the articles without even clicking a single mouse button.
 
