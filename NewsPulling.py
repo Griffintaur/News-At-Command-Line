@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jul 24 20:01:34 2017
+Created on  Jul 24 20:01:34 2016-2017
 
 @author: 310247467
 """
 
 import requests
 from configReader import ConfigurationReader
+from requests import ConnectionError
+import sys
 
 class NewsPulling(object):
     """This class is used to pull news from the internet depending on the source specified """
@@ -18,10 +20,16 @@ class NewsPulling(object):
         self.__APIKey=Configuration.GetAPIKEY()
         self.__Limit=Configuration.GetLimit()
         url='https://newsapi.org/v1/articles?source='+self.Source+'&sortBy=top&apiKey='+self.__APIKey
-        req=requests.get(url)
-        #if(req.status_code==200):
-            #print req.json()   
-        return req
+        try:
+            req=requests.get(url)
+            if(req.status_code==200):
+                return req
+            else:
+                print "There is some issue in connecting to the interner.Please check your firewall or internet"
+        except ConnectionError as e:
+            print "A connection Attempt failed"
+            print e.message
+            sys.exit()
     
     def JsonRead(self):
         req=self.PullNews()
@@ -49,6 +57,9 @@ class NewsPulling(object):
         
     def BeautifyArticles(self):
         self.Articles=self.JsonRead()
+        if self.Articles is None or len(self.Articles)==0:
+            print "No articles found"
+            sys.exit()
         print "=================STORIES=================================="
         for i in xrange(len(self.Articles)):
             print "[" +str(i) +"]",
@@ -61,7 +72,7 @@ class NewsPulling(object):
                 print "\t"+self.Articles[i][4]
             if self.Articles[i][3] is not None:
                 print "\t"+self.Articles[i][3]+"\n"
-        print "==========================================================="
+        print "***************************************************************"
         return self.Articles 
     
         

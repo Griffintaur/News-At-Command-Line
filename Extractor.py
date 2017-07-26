@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jul 24 23:05:13 2017
+Created on  Jul 24 23:05:13 2016-2017
 
 @author: 310247467
 """
@@ -104,7 +104,6 @@ class TheHindu(Extractor):
             for foundcontent in content.find_all("p"):
                 Result.append(foundcontent.text)
         Result=''.join(Result)
-        print Result
         return (title,Result)
     
 class TimesOfIndia(Extractor):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jul 24 21:42:05 2017
+Created on  Jul 24 21:42:05 2016-2017
 
 @author: 310247467
 """
@@ -40,9 +40,13 @@ class ExtractMainContent(object):
         print title
         print "=========================================================================="
         print output
+        print "*********************************************************************************"
+        print "\n\n"
         if len(output) == 0:
             print "There isn't much on the site .It is media(video/image) post.To further view the media post Go to the below link"
             print self.url
+            print "*********************************************************************************"
+            print "\n\n"
             
         
     
