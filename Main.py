@@ -8,6 +8,8 @@ from NewsPulling import NewsPulling
 from configReader import ConfigurationReader
 from ExtractMainContent import ExtractMainContent
 import sys
+import codecs
+
 
 def NewsSources():
     NewsSources=ConfigurationReader().GetWebsiteSupported()
@@ -31,7 +33,9 @@ def App():
         obj=NewsPulling(newsSources[newsSourceNumber])
         Articles=obj.BeautifyArticles();   
         while True:
-            print """Do you want to read any story further?.if yes,Please Select the Number corresponding to the article or Press 99 to quit"""
+            print """Do you want to read any story further?.if yes,Please Select the Number corresponding to the article """
+            print "Press 66 to go back to the main menu"
+            print "Press 99 to quit"
             try:
                 articleNumber=raw_input("Article No >>>>")
             except ValueError:
@@ -39,6 +43,8 @@ def App():
             articleNumber=int(articleNumber)
             if articleNumber==99 :
                 sys.exit()
+            if articleNumber==66 :
+                break
             if (articleNumber >= len(Articles)):
                 print "please select the index no less than "+ str(len(Articles))
             #print Articles[articleNumber][2]
@@ -47,4 +53,5 @@ def App():
                     
 
 if __name__== "__main__":
+    sys.stdout = codecs.getwriter('utf8')(sys.stdout)
     App();

@@ -7,10 +7,9 @@ Created on  Jul 24 21:42:05 2016-2017
 import requests
 from configReader import ConfigurationReader
 from Extractor import *
-
+import textwrap
 
 class ExtractMainContent(object):
-    
     def __init__(self,source,articleurl):
         self.extractorlist=[HuffingtonPost(),NYT(),BBC(),BloomBerg(),Guardian(),TheHindu(),TimesOfIndia()]
         websites=ConfigurationReader().GetWebsiteSupported()
@@ -19,6 +18,7 @@ class ExtractMainContent(object):
             self.Mapping[website]=self.extractorlist[index]
         self.Source=source
         self.url=articleurl
+        self.textWrap=textwrap.TextWrapper(initial_indent='\t',subsequent_indent='\t',width=100)
         
         
     def DownloadContent(self):
@@ -37,9 +37,9 @@ class ExtractMainContent(object):
     def Beautify(self):
         title,output=self.Extract()            
         print "=========================================================================="
-        print title
+        print "\t"+title
         print "=========================================================================="
-        print output
+        print (self.textWrap.fill(output)) #wrap of the line
         print "*********************************************************************************"
         print "\n\n"
         if len(output) == 0:
