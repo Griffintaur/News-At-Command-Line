@@ -2,7 +2,7 @@
 """
 Created on  Jul 24 21:42:05 2016-2017
 
-@author: 310247467
+@author: Ankit Singh
 """
 import requests
 from configReader import ConfigurationReader
