@@ -25,7 +25,7 @@ class NewsPulling(object):
             if(req.status_code==200):
                 return req
             else:
-                print "There is some issue in connecting to the interner.Please check your firewall or internet"
+                print "There is some issue in connecting to the internet. Please check your firewall or internet"
         except ConnectionError as e:
             print "A connection Attempt failed"
             print e.message
