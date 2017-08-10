@@ -28,15 +28,18 @@ def App():
                 newsSourceNumber=raw_input("News Source Number >>>>")
                 newsSourceNumber=int(newsSourceNumber)
 
+                if newsSourceNumber==99:
+                    sys.exit()
+
                 if (newsSourceNumber >=len(newsSources)):
                     print "please select an index less than "+ str(len(newsSources))
                 else:
                     sourceNumberOkay = True
+                
             except ValueError:
                 print("That is not a valid News source number")    
 
-        if newsSourceNumber==99:
-            sys.exit()
+        
           
         obj=NewsPulling(newsSources[newsSourceNumber])
         Articles=obj.BeautifyArticles();   
@@ -51,18 +54,21 @@ def App():
                     articleNumber=raw_input("Article No >>>>")
                     articleNumber=int(articleNumber)
 
+                    if articleNumber==99 :
+                        sys.exit()
+                    if articleNumber==66 :
+                        break
+
                     if (articleNumber >= len(Articles)):
                         print "please select an index less than "+ str(len(Articles))
                     else:
                         articleNumberOkay = True
+
                 except ValueError:
                     print ("That's not a valid article number")
 
             
-            if articleNumber==99 :
-                sys.exit()
-            if articleNumber==66 :
-                break
+            
             
             #print Articles[articleNumber][2]
             extr=ExtractMainContent(newsSources[newsSourceNumber],Articles[articleNumber][2])
