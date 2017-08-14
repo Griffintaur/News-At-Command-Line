@@ -9,7 +9,12 @@ from configReader import ConfigurationReader
 from ExtractMainContent import ExtractMainContent
 import sys
 import codecs
+import signal
 
+def signal_handler(signal, frame):
+        print('\nExiting gracefully')
+        sys.exit(0)
+signal.signal(signal.SIGINT, signal_handler)
 
 def NewsSources():
     NewsSources=ConfigurationReader().GetWebsiteSupported()

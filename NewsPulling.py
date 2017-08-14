@@ -30,6 +30,10 @@ class NewsPulling(object):
             print "A connection Attempt failed"
             print e.message
             sys.exit()
+      	except TimeoutError as e:
+      		print "Connection TimedOut"
+      		print e.message
+      		sys.exit(0)
     
     def JsonRead(self):
         req=self.PullNews()
