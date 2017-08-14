@@ -11,7 +11,7 @@ import sys
 import codecs
 import signal
 """
-this function handles signal SIGINT generated when user when pressed ctrl-c
+this function handles signal SIGINT generated when user presses ctrl-c
 if SIGINT is not handled manually abnormal termination occurs
 """
 def signal_handler(signal, frame):
