@@ -10,10 +10,14 @@ from ExtractMainContent import ExtractMainContent
 import sys
 import codecs
 import signal
-
+"""
+this function handles signal SIGINT generated when user when pressed ctrl-c
+if SIGINT is not handled manually abnormal termination occurs
+"""
 def signal_handler(signal, frame):
-        print('\nExiting gracefully')
-        sys.exit(0)
+    print('\nExiting gracefully')
+    sys.exit(0)
+#registering the signal SIGINT with signal_handler function    
 signal.signal(signal.SIGINT, signal_handler)
 
 def NewsSources():
