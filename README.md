@@ -17,7 +17,7 @@
 - You can change the maximum number of posts in **config.yml**. Look for **Limit** attribute.
 
 # How To Use
- Just run the Main.py 
+ Just run the Main.py. 
  You can understand the rest while using it for the first time.
  ### To execute
     python Main.py
