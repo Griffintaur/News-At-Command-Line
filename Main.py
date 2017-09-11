@@ -19,34 +19,34 @@ def App():
     newsSources=NewsSources()
     while True:
         for i in xrange(len(newsSources)):
-            print "["+str(i)+"]" +"\t" +newsSources[i]
-        print "Please enter the index of the news source or press 99 to quit"
+            print ("["+str(i)+"]" +"\t" +newsSources[i])
+        print ("Please enter the index of the news source or press 99 to quit")
         try:
-            newsSourceNumber=raw_input("News Source Number >>>>")
+            newsSourceNumber=raw_input("News Source Number >>>> ")
         except ValueError:  
-            print("That is not a valid News source number")
+            print ("That is not a valid News Source Number")
         newsSourceNumber=int(newsSourceNumber)
         if newsSourceNumber==99:
             sys.exit()
         if (newsSourceNumber >=len(newsSources)):
-            print "please select the index no less than "+ str(len(newsSources))  
+            print ("Please select the index no less than "+ str(len(newsSources)))  
         obj=NewsPulling(newsSources[newsSourceNumber])
         Articles=obj.BeautifyArticles();   
         while True:
-            print """Do you want to read any story further?.if yes,Please Select the Number corresponding to the article """
-            print "Press 66 to go back to the main menu"
-            print "Press 99 to quit"
+            print ("Do you want to read any story further? If yes, please select the number corresponding to the article")
+            print ("Press 66 to go back to the main menu")
+            print ("Press 99 to quit")
             try:
-                articleNumber=raw_input("Article No >>>>")
+                articleNumber=raw_input("Article No >>>> ")
             except ValueError:
-                print ("That's not a valid article number")
+                print ("That is not a valid Article Number")
             articleNumber=int(articleNumber)
             if articleNumber==99 :
                 sys.exit()
             if articleNumber==66 :
                 break
             if (articleNumber >= len(Articles)):
-                print "please select the index no less than "+ str(len(Articles))
+                print ("Please select the index no less than "+ str(len(Articles)))
             #print Articles[articleNumber][2]
             extr=ExtractMainContent(newsSources[newsSourceNumber],Articles[articleNumber][2])
             extr.Beautify()
