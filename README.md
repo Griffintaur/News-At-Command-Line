@@ -11,20 +11,20 @@
 - **Beautiful Soup** 
 - **textwrap** 
 
-#### I recommend to install Python Anaconda so that all useful libraries are available at one go.
+#### I recommend installing Python Anaconda so that all useful libraries are available at one go.
 # Working
-- All sample input images are placed under the **Images** folder
-- you can change the maximum no of posts in **config.yml** .Look for **Limit** attribute.
+- All sample input images are placed under the **Images** folder.
+- You can change the maximum number of posts in **config.yml**. Look for **Limit** attribute.
 
 # How To Use
- Just run the Main.py 
+ Just run the Main.py. 
  You can understand the rest while using it for the first time.
  ### To execute
     python Main.py
  
 # Contributing
-We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests .
- [MAIL me](anky.nits.cse@gmail.com) for any discussion on the project or contribution
+We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests.
+ [MAIL me](anky.nits.cse@gmail.com) for any discussion on the project or contribution.
 
 # Support
 Please [open an issue on GitHub](https://github.com/Griffintaur/News-At-Command-Line/issues/new) if you'd like to report a bug or request a feature.  
