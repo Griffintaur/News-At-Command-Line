@@ -12,6 +12,7 @@ class ConfigurationReader():
     __APIKEY=None
     __WebsiteSupported=[]
     __Limit=None
+    __DefaultPath = None
     def __init__(self):
         with open("config.yml", 'r') as ymlfile:
             cfg = yaml.load(ymlfile)
@@ -21,9 +22,14 @@ class ConfigurationReader():
         #print ConfigurationReader.__Limit
         ConfigurationReader.__WebsiteSupported=cfg['WebsiteSupported']
         #print ConfigurationReader.__WebsiteSupported
+        ConfigurationReader.__DefaultPath = cfg['DefaultPath']
     @staticmethod    
     def GetAPIKEY():
         return ConfigurationReader.__APIKEY
+
+    @staticmethod
+    def GetDefaultPath():
+        return ConfigurationReader.__DefaultPath
     
     @staticmethod
     def GetLimit():

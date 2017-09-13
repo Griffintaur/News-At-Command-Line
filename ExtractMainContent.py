@@ -8,6 +8,9 @@ import requests
 from configReader import ConfigurationReader
 from Extractor import *
 import textwrap
+import os, sys, dateutil
+
+from dateutil.parser import parse
 
 class ExtractMainContent(object):
     def __init__(self,source,articleurl):
@@ -23,7 +26,7 @@ class ExtractMainContent(object):
         
     def DownloadContent(self):
         headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
-        req=requests.get(self.url,headers=headers)
+        req=requests.get(self.url, headers=headers)
         return req.text
     
     def AddExtractorList(self,extractor):
@@ -43,10 +46,32 @@ class ExtractMainContent(object):
         print "*********************************************************************************"
         print "\n\n"
         if len(output) == 0:
-            print "There isn't much on the site .It is media(video/image) post.To further view the media post Go to the below link"
+            print "There isn't much on the site. It is media(video/image) post. To further view the media post, go to the below link"
             print self.url
             print "*********************************************************************************"
             print "\n\n"
+    def PrintToFile(self, currArticle):
+        reload(sys)
+        sys.setdefaultencoding('utf8')
+        
+        date = dateutil.parser.parse(currArticle[3]).strftime("%y-%m-%d")
+        title = currArticle[1]
+
+        filepath = ConfigurationReader().GetDefaultPath() + self.Source + '/' +  date + '/' + title + ".txt"
+        
+        if not os.path.exists(os.path.dirname(filepath)):
+            os.makedirs(os.path.dirname(filepath))
+
+        orig_stdout = sys.stdout
+        f = open(filepath, "w")
+        sys.stdout = f
+
+        self.Beautify()
+
+        sys.stdout = orig_stdout
+        f.close()
+
+        print("SAVED to corresponding source folder in saved_news folder")
             
         
     
