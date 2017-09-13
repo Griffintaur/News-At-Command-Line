@@ -50,8 +50,13 @@ def App():
             #print Articles[articleNumber][2]
             extr=ExtractMainContent(newsSources[newsSourceNumber],Articles[articleNumber][2])
             extr.Beautify()
-                    
 
-def main():
+
+
+
+def Main():
     sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-    App();
+    App()
+
+if __name__ == '__main__':
+    Main()

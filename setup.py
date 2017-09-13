@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from os import path
 
 here = path.abspath(path.dirname(__file__))
@@ -11,19 +11,19 @@ setup(
     version="0.0.1",
     description="Read your news on your favourite terminal",
     author="Ankit Singh",
+    packages=['News'],
     long_description= long_description,
 
-    install_requirements=[
+    install_requires=[
 		'bs4==0.0.1',
 		'PyYAML==3.12',
 		'requests==2.18.4',
     ],
 
-    url='https://github.com/Griffintaur/News-At-Command-Line',
     license='MIT',
     entry_points={
         'console_scripts': [
-            'newsctl=Main:main'
+            'newsctl=News.Main:Main'
         ]
     }
 )
