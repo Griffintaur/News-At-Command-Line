@@ -52,6 +52,6 @@ def App():
             extr.Beautify()
                     
 
-if __name__== "__main__":
+def main():
     sys.stdout = codecs.getwriter('utf8')(sys.stdout)
     App();
