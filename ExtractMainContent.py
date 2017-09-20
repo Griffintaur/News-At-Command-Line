@@ -47,7 +47,12 @@ class ExtractMainContent(object):
             print self.url
             print "*********************************************************************************"
             print "\n\n"
-            
+
+    def FileSave(self):
+        title,output=self.Extract()
+        article_file = open(title+".txt","w+")
+        article_file.write(output.encode('utf-8'))
+        article_file.close()
         
     
     
