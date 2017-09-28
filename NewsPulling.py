@@ -33,7 +33,7 @@ class NewsPulling(object):
     
     def JsonRead(self):
         req=self.PullNews()
-        # indicate if we to convert to utf-8
+        # indicate if we need to convert to utf-8
         needsconversion = False
         if req.encoding != 'utf-8':
             needsconversion = True
