@@ -7,8 +7,10 @@ Created on Jul 24 16:15:11 2016-2017
 from NewsPulling import NewsPulling
 from configReader import ConfigurationReader
 from ExtractMainContent import ExtractMainContent
+from SavedArticle import Article, SavedArticle
 import sys
 import codecs
+import os
 
 
 def NewsSources():
@@ -17,10 +19,13 @@ def NewsSources():
 
 def App():
     newsSources=NewsSources()
+    savedArticles=SavedArticle()
     while True:
         for i in xrange(len(newsSources)):
             print ("["+str(i)+"]" +"\t" +newsSources[i])
-        print ("Please enter the index of the news source or press 99 to quit")
+        print ("Please enter the index of the news source")
+        print("Press 88 to check saved articles")
+        print("Press 99 to quit")
         try:
             newsSourceNumber=raw_input("News Source Number >>>> ")
         except ValueError:  
@@ -28,8 +33,19 @@ def App():
         newsSourceNumber=int(newsSourceNumber)
         if newsSourceNumber==99:
             sys.exit()
+        elif newsSourceNumber == 88:
+            while True:
+                try:
+                    savedArticles.mainLoop()
+                except ValueError as e:
+                    print(e)
+                    break
+                except Exception as e:
+                    print(e)
+                    break
         if (newsSourceNumber >=len(newsSources)):
-            print ("Please select the index no less than "+ str(len(newsSources)))  
+            print ("Please select the index no less than "+ str(len(newsSources)))
+            continue
         obj=NewsPulling(newsSources[newsSourceNumber])
         Articles=obj.BeautifyArticles();   
         while True:

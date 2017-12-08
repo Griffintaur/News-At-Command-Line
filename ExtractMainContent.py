@@ -4,10 +4,13 @@ Created on  Jul 24 21:42:05 2016-2017
 
 @author: Ankit Singh
 """
+import os
 import requests
 from configReader import ConfigurationReader
 from Extractor import *
 import textwrap
+import json
+import re
 
 class ExtractMainContent(object):
     def __init__(self,source,articleurl):
@@ -50,10 +53,15 @@ class ExtractMainContent(object):
 
     def FileSave(self):
         title,output=self.Extract()
-        article_file = open(title+".txt","w+")
-        article_file.write(output.encode('utf-8'))
-        article_file.close()
-        
-    
-    
-    
+        jsonFile = {
+            'title': title,
+            'content': output.encode('utf-8'),
+            'url': self.url,
+        }
+        fileName = re.sub('[^\d\w]+', '_', title)
+        thisFileName = os.path.dirname(__file__)
+        thisPathName = os.path.abspath(thisFileName)
+        filePath = os.path.join(thisPathName, 'saved', fileName)
+        with open("%s.json" %filePath,"w+") as article_file:
+            #article_file.write(output.encode('utf-8'))
+            json.dump(jsonFile, article_file, indent=4)
