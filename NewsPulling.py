@@ -25,10 +25,10 @@ class NewsPulling(object):
             if(req.status_code==200):
                 return req
             else:
-                print "There is some issue in connecting to the internet. Please check your firewall or internet"
+                print("There is some issue in connecting to the internet. Please check your firewall or internet")
         except ConnectionError as e:
-            print "A connection Attempt failed"
-            print e.message
+            print("A connection Attempt failed")
+            print(e.message)
             sys.exit()
     
     def JsonRead(self):
@@ -44,16 +44,15 @@ class NewsPulling(object):
         
         FilteredArticles=[]
         
-        for i in xrange(maxarticles):
+        for i in range(maxarticles):
             article=articles[i]
-            #print article
             if needsconversion:
-                description=unicode(article['description'], 'utf-8')
+                description=str(article['description'], 'utf-8')
                 #print description
-                title=unicode(article['title'], 'utf-8')
-                Article_url=unicode(article['url'], 'utf-8')
-                DateofPublication=unicode(article['publishedAt'], 'utf-8')
-                Author=unicode(article['author'], 'utf-8')
+                title=str(article['title'], 'utf-8')
+                Article_url=str(article['url'], 'utf-8')
+                DateofPublication=str(article['publishedAt'], 'utf-8')
+                Author=str(article['author'], 'utf-8')
                 FilteredArticles.append([description,title,Article_url,DateofPublication,Author])
             else:
                 description=article['description']
@@ -64,28 +63,30 @@ class NewsPulling(object):
                 Author=article['author']
                 FilteredArticles.append([description,title,Article_url,DateofPublication,Author])
         return FilteredArticles
-            
-        #jsondict=json.load(req.json())
-        #print jsondict
         
     def BeautifyArticles(self):
         self.Articles=self.JsonRead()
         if self.Articles is None or len(self.Articles)==0:
-            print "No articles found"
+            print("No articles found")
             sys.exit()
-        print "=================STORIES=================================="
-        for i in xrange(len(self.Articles)):
-            print "[" +str(i) +"]",
-           # print(sequence,end='') used for python 3.x
+        print("\n" + ("="*16) + " STORIES " + ("="*16))
+        for i in range(len(self.Articles)):
+            print("[" +str(i+1) +"]", end=' ')
+            # Title
             if self.Articles[i][1] is not None:
-                print "\t"+self.Articles[i][1]
+                print("\t"+self.Articles[i][1])
+            # Summary
             if self.Articles[i][0] is not None:
-                print "\t"+self.Articles[i][0]
+                # Limit Summary Size
+                summary = self.Articles[i][0][:85] + (self.Articles[i][0][85:] and '...')
+                print("\t"+summary)
+            # Author
             if self.Articles[i][4] is not None:
-                print "\t"+self.Articles[i][4]
+                print("\t"+self.Articles[i][4])
+            # Date
             if self.Articles[i][3] is not None:
-                print "\t"+self.Articles[i][3]+"\n"
-        print "***************************************************************"
+                print("\t"+self.Articles[i][3]+"\n")
+        print("="*40)
         return self.Articles 
     
         

@@ -12,51 +12,75 @@ import codecs
 
 
 def NewsSources():
-    NewsSources=ConfigurationReader().GetWebsiteSupported()
+    NewsSources = ConfigurationReader().GetWebsiteSupported()
     return NewsSources
 
 def App():
-    newsSources=NewsSources()
+
+    # Cool Title/Banner
+    print("=" * 40)
+    print("\tNews at the Command Line")
+    print("=" * 40)
+    print()
+
     while True:
-        for i in xrange(len(newsSources)):
-            print ("["+str(i)+"]" +"\t" +newsSources[i])
-        print ("Please enter the index of the news source or press 99 to quit")
-        try:
-            newsSourceNumber=raw_input("News Source Number >>>> ")
-        except ValueError:  
-            print ("That is not a valid News Source Number")
-        newsSourceNumber=int(newsSourceNumber)
-        if newsSourceNumber==99:
-            sys.exit()
-        if (newsSourceNumber >=len(newsSources)):
-            print ("Please select the index no less than "+ str(len(newsSources)))  
-        obj=NewsPulling(newsSources[newsSourceNumber])
-        Articles=obj.BeautifyArticles();   
+        newsSources = NewsSources()
+        # Output News Sources
+        for i in range(len(newsSources)):
+            print("[" + str(i+1) + "]" + "\t" + newsSources[i])
+        print("\nPlease enter the index of the news source or type 'quit' to exit")
+
+        # Validate Input
         while True:
-            print ("Do you want to read any story further? If yes, please select the number corresponding to the article")
-            print ("Press 66 to go back to the main menu")
-            print ("Press 99 to quit")
+            newsSourceNumber = input("News Source Number >>>> ")
+            # Quit
+            if(newsSourceNumber.lower() == "quit"):
+                sys.exit()
             try:
-                articleNumber=raw_input("Article No >>>> ")
+                newsSourceNumber = int(newsSourceNumber)-1
+                if(newsSourceNumber >= len(newsSources) or newsSourceNumber < 0):
+                    print("Please select an index between 1-" + str(len(newsSources)))
+                # Good Input, break
+                else:
+                    break
+            except ValueError:  
+                print("That is not a valid News Source Number")
+
+        while True:
+
+            obj=NewsPulling(newsSources[newsSourceNumber])
+            Articles=obj.BeautifyArticles();
+            print ("Do you want to read a story further? If yes, please select the number corresponding to the article")
+            print ("Enter 'back' to go back to the main menu")
+            print ("Press 'quit' to quit")
+            articleNumber = input("Article No >>>> ")
+            # Back
+            if(articleNumber.lower() == "back"):
+                break
+            # Exit
+            if(articleNumber.lower() == "quit"):
+                sys.exit()
+
+            try:
+                articleNumber = int(articleNumber)-1
+                if (articleNumber >= len(Articles) or articleNumber < 0):
+                    print("Please select an index between 1-" + str(len(Articles)))
+
+                else:
+                    print("\n"*5)
+                    extr=ExtractMainContent(newsSources[newsSourceNumber],Articles[articleNumber][2])
+                    extr.Beautify()
+                    print ("Do you want to save this article in file")
+                    YesorNo = str(input("Want to save? y/n >>> "))
+                    if YesorNo.lower() == "yes" or YesorNo.lower() == "y":
+                        extr.FileSave()
+                        print("File saved!")
+                    print("\n")
+
             except ValueError:
                 print ("That is not a valid Article Number")
-            articleNumber=int(articleNumber)
-            if articleNumber==99 :
-                sys.exit()
-            elif articleNumber==66 :
-                break
-            elif (articleNumber >= len(Articles)):
-                print ("Please select the index no less than "+ str(len(Articles)))
-            #print Articles[articleNumber][2]
-            else:
-                extr=ExtractMainContent(newsSources[newsSourceNumber],Articles[articleNumber][2])
-                extr.Beautify()
-                print ("Do you want to save this article in file")
-                YesorNo = int(raw_input("Press 1 to save else press 0 to continue >>> "))
-                if YesorNo == 1:
-                    extr.FileSave()
-                    
+
+                        
 
 if __name__== "__main__":
-    sys.stdout = codecs.getwriter('utf8')(sys.stdout)
     App();

@@ -6,27 +6,25 @@
 
 # Modules Requirements
 
-- **Python 2.7 +**
+- **Python 3.x**
 - **Requests** 
 - **Beautiful Soup** 
 - **PyYAML**
 
 To install the module dependencies before running the application, simply navigate into the project folder and run `pip install -r requirements.txt`.
 
-#### I recommend installing Python Anaconda so that all useful libraries are available at one go.
 # Working
 - All sample input images are placed under the **Images** folder.
 - You can change the maximum number of posts in **config.yml**. Look for **Limit** attribute.
 
 # How To Use
- Just run the Main.py. 
- You can understand the rest while using it for the first time.
- ### To execute
-    python Main.py
- 
+ Make sure you have installed required libraries, instructions above.
+ Just run the main.py, do this by typing `py main.py`. 
+ The rest is quite straight forward.
+
 # Contributing
 We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests.
- [MAIL me](anky.nits.cse@gmail.com) for any discussion on the project or contribution.
+ [mail me](anky.nits.cse@gmail.com) for any discussion on the project or contribution.
 
 # Support
 Please [open an issue on GitHub](https://github.com/Griffintaur/News-At-Command-Line/issues/new) if you'd like to report a bug or request a feature.  

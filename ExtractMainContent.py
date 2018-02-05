@@ -36,22 +36,29 @@ class ExtractMainContent(object):
     
     def Beautify(self):
         title,output=self.Extract()            
-        print "=========================================================================="
-        print "\t"+title
-        print "=========================================================================="
-        print (self.textWrap.fill(output)) #wrap of the line
-        print "*********************************************************************************"
-        print "\n\n"
+        print("="*(len(title) + 15))
+        print("\t"+title)
+        print("="*(len(title) + 15))
+
+        print((self.textWrap.fill(output))) #wrap of the line
+        print("*********************************************************************************")
         if len(output) == 0:
-            print "There isn't much on the site .It is media(video/image) post.To further view the media post Go to the below link"
-            print self.url
-            print "*********************************************************************************"
-            print "\n\n"
+            print("Sorry :(")
+            print("There isn't much text on the site besides video/image. To further view the media post, Go to the below link")
+            print(self.url)
+            print("*********************************************************************************")
+            print("\n\n")
 
     def FileSave(self):
         title,output=self.Extract()
-        article_file = open(title+".txt","w+")
-        article_file.write(output.encode('utf-8'))
+
+        # Remove Chars not allowed in filenames
+        for char in ['<','>', "/", ":", '"', "\\", "|", "?", "*"]:
+            if char in title:
+                title = title.replace(char,"")
+
+        article_file = open(title + ".txt","w+")
+        article_file.write(output)
         article_file.close()
         
     
