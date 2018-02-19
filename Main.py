@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Jul 24 16:15:11 2016-2017
-
-@author: Ankit Singh
-"""
 from NewsPulling import NewsPulling
 from configReader import ConfigurationReader
 from ExtractMainContent import ExtractMainContent

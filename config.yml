@@ -1,20 +1,4 @@
-# -*- coding: utf-8 -*-
-#"""
-#Created on  Jul 24 16:13:25 2016-2017
-
-#@author: Ankit Singh
-#"""
-
-# -*- coding: utf-8 -*-
-
-#Created on  Jul 20 11:43:52 2016
-
-#@author: Ankit Singh
-
-
 WebsiteSupported:
-   # - IndianExpress
-   # - TheHindu
     - the-huffington-post
     - the-new-york-times
     - bbc-news
@@ -22,10 +6,8 @@ WebsiteSupported:
     - the-guardian-uk
     - the-hindu
     - the-times-of-india
-   # - The WashingtonPost
-   # - TheNewyorkTimes
 
-#No of posts to be displayed in the one go    
+# Posts shown   
 Limit: 10
 
 Apikey: bda5818cc2af461e98330ccdf6fb9cbe

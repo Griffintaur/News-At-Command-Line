@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on  Jul 24 20:01:34 2016-2017
-
-@author: Ankit Singh
-"""
-
 import requests
 from configReader import ConfigurationReader
 from requests import ConnectionError

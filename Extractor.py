@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on  Jul 24 23:05:13 2016-2017
-
-@author: Ankit Singh
-"""
 from bs4 import BeautifulSoup
 
 class Extractor(object):

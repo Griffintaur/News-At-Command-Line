@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on  Jul 24 21:42:05 2016-2017
-
-@author: Ankit Singh
-"""
 import requests
 from configReader import ConfigurationReader
 from Extractor import *

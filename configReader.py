@@ -1,13 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on  Jul 24 20:14:29 2016-2017
-
-@author: Ankit Singh
-"""
 import yaml
 
-##to do
-#implement singleton pattern here
+# TODO: implement singleton pattern here
 class ConfigurationReader():
     __APIKEY=None
     __WebsiteSupported=[]
