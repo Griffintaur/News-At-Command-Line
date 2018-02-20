@@ -9,6 +9,7 @@ import requests
 from configReader import ConfigurationReader
 from requests import ConnectionError
 import sys
+from lazyme.string import color_print
 
 class NewsPulling(object):
     """This class is used to pull news from the internet depending on the source specified """
@@ -73,9 +74,9 @@ class NewsPulling(object):
         if self.Articles is None or len(self.Articles)==0:
             print "No articles found"
             sys.exit()
-        print "=================STORIES=================================="
+        color_print("=================STORIES==================================",color='cyan')
         for i in xrange(len(self.Articles)):
-            print "[" +str(i) +"]",
+            color_print("[" +str(i) +"]",color='yellow')
            # print(sequence,end='') used for python 3.x
             if self.Articles[i][1] is not None:
                 print "\t"+self.Articles[i][1]
@@ -85,7 +86,7 @@ class NewsPulling(object):
                 print "\t"+self.Articles[i][4]
             if self.Articles[i][3] is not None:
                 print "\t"+self.Articles[i][3]+"\n"
-        print "***************************************************************"
+        color_print("***************************************************************",color='cyan')
         return self.Articles 
     
         
