@@ -8,7 +8,7 @@
 
 # Modules Requirements
 
-- **Python 3.x**
+- **Python 3.6+**
 - **Requests** 
 - **Beautiful Soup** 
 - **PyYAML**
