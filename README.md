@@ -1,3 +1,5 @@
+# Please note that I have made changes that invalidate the information in the readme. To run create the saved_articles directory, if it isn't pulled from the repo, then use Python 3.6+ and run `python news.py`. I'll fix the readme soon, and provide a better way to install and run. Thanks. - Tom
+
 # News at the Command line
 ### Want to be kept updated without visiting the news portals every now and then
 
