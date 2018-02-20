@@ -8,7 +8,6 @@ import requests
 from configReader import ConfigurationReader
 from Extractor import *
 import textwrap
-import os
 
 class ExtractMainContent(object):
     def __init__(self,source,articleurl):
@@ -51,10 +50,10 @@ class ExtractMainContent(object):
 
     def FileSave(self):
         title,output=self.Extract()
-        current_directory = os.getcwd()
-        save_directory = os.path.join(current_directory, r'Saved_articles')
-        if not os.path.exists(save_directory):
-           os.makedirs(save_directory)
-        article_file = open("Saved_articles/"+title+".txt","w+")
+        article_file = open(title+".txt","w+")
         article_file.write(output.encode('utf-8'))
         article_file.close()
+        
+    
+    
+    
