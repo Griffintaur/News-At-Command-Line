@@ -3,7 +3,7 @@ import sys
 import requests
 from requests import ConnectionError
 
-from configReader import ConfigurationReader
+from config_reader import ConfigurationReader
 
 
 class NewsPulling:
@@ -12,7 +12,7 @@ class NewsPulling:
     def __init__(self, newsSource):
         self.Source = newsSource
 
-    def PullNews(self):
+    def pull_news(self):
         config = ConfigurationReader()
         self.__APIKey = config.APIKEY
         self.__Limit = config.limit
@@ -30,8 +30,8 @@ class NewsPulling:
             print(e.message)
             sys.exit()
 
-    def JsonRead(self):
-        req = self.PullNews()
+    def json_read(self):
+        req = self.pull_news()
         # indicate if we need to convert to utf-8
         needsconversion = False
         if req.encoding != 'utf-8':
@@ -66,7 +66,7 @@ class NewsPulling:
         return FilteredArticles
 
     def beautify_articles(self):
-        self.Articles = self.JsonRead()
+        self.Articles = self.json_read()
         if self.Articles is None or len(self.Articles) == 0:
             print("No articles found")
             sys.exit()
