@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 
 
-class Extractor(object):
+class Extractor:
 
     def ExtractionAlgo(self, text):
         pass

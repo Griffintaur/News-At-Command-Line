@@ -4,7 +4,7 @@ from Extractor import *
 import textwrap
 
 
-class ExtractMainContent(object):
+class ExtractMainContent:
     def __init__(self, source, articleurl):
         self.extractorlist = [HuffingtonPost(), NYT(), BBC(
         ), BloomBerg(), Guardian(), TheHindu(), TimesOfIndia()]
@@ -17,9 +17,10 @@ class ExtractMainContent(object):
         self.textWrap = textwrap.TextWrapper(
             initial_indent='\t', subsequent_indent='\t', width=100)
 
-    def DownloadContent(self):
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
+    def download(self):
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                                 'AppleWebKit/537.36 (KHTML, like Gecko) '
+                                 'Chrome/59.0.3071.115 Safari/537.36'}
         req = requests.get(self.url, headers=headers)
         return req.text
 
@@ -28,7 +29,7 @@ class ExtractMainContent(object):
 
     def Extract(self):
         self.ExtractStrategy = self.Mapping[self.Source]
-        text = self.DownloadContent()
+        text = self.download()
         return self.ExtractStrategy.ExtractionAlgo(text)
 
     def Beautify(self):
@@ -47,7 +48,7 @@ class ExtractMainContent(object):
                 "*********************************************************************************")
             print("\n\n")
 
-    def FileSave(self):
+    def save(self):
         title, output = self.Extract()
 
         # Remove Chars not allowed in filenames
@@ -55,6 +56,5 @@ class ExtractMainContent(object):
             if char in title:
                 title = title.replace(char, "")
 
-        article_file = open(title + ".txt", "w+")
-        article_file.write(output)
-        article_file.close()
+        with open(f'saved_articles/{title}.txt', "w+") as f:
+            f.write(output)
