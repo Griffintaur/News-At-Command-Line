@@ -65,7 +65,7 @@ class NewsPulling:
                     [description, title, Article_url, DateofPublication, Author])
         return FilteredArticles
 
-    def BeautifyArticles(self):
+    def beautify_articles(self):
         self.Articles = self.JsonRead()
         if self.Articles is None or len(self.Articles) == 0:
             print("No articles found")

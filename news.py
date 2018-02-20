@@ -1,8 +1,15 @@
 import sys
+from enum import Enum
 
 from NewsPulling import NewsPulling
 from configReader import ConfigurationReader
 from ExtractMainContent import ExtractMainContent
+
+
+class SelectionStatus(Enum):
+    BACK = 1
+    EXIT = 2
+    READ = 3
 
 
 def news_sources():
@@ -52,16 +59,16 @@ def prompt_for_article(max=0):
 
         # Back
         if(article_selection.lower()[0] == 'b'):
-            return -2  # TODO: This is terrible, improve this.
+            return SelectionStatus.BACK, None
         # Exit
         elif(article_selection.lower()[0] == 'q'):
-            return -1
+            return SelectionStatus.EXIT, None
 
         article_selection = int(article_selection)
         if 0 > article_selection - 1 or article_selection > max:
             print(f'Please select an index between 1-{max}.')
         else:
-            return article_selection - 1
+            return SelectionStatus.READ, article_selection - 1
 
 
 def prompt_for_save():
@@ -82,18 +89,18 @@ def main():
         source_choice = prompt_for_source(sources)
 
         while True:
-            obj = NewsPulling(sources[source_choice])
-            Articles = obj.BeautifyArticles()
-            article_selection = prompt_for_article(max=len(Articles))
-            if article_selection == -1:
+            puller = NewsPulling(sources[source_choice])
+            articles = puller.beautify_articles()
+            status, article_selection = prompt_for_article(max=len(articles))
+            if status == SelectionStatus.EXIT:
                 sys.exit()
-            elif article_selection == -2:
+            elif status == SelectionStatus.BACK:
                 break
             else:
                 print("\n" * 5)
                 extr = ExtractMainContent(
-                    sources[source_choice], Articles[article_selection][2])
-                extr.Beautify()
+                    sources[source_choice], articles[article_selection][2])
+                extr.beautify()
 
                 if prompt_for_save():
                     extr.save()

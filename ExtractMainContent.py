@@ -32,7 +32,7 @@ class ExtractMainContent:
         text = self.download()
         return self.ExtractStrategy.ExtractionAlgo(text)
 
-    def Beautify(self):
+    def beautify(self):
         title, output = self.Extract()
         print("=" * (len(title) + 15))
         print("\t" + title)
