@@ -18,18 +18,25 @@ def NewsSources():
 def App():
     newsSources=NewsSources()
     while True:
-        for i in xrange(len(newsSources)):
-            print ("["+str(i)+"]" +"\t" +newsSources[i])
-        print ("Please enter the index of the news source or press 99 to quit")
-        try:
-            newsSourceNumber=raw_input("News Source Number >>>> ")
-        except ValueError:  
-            print ("That is not a valid News Source Number")
-        newsSourceNumber=int(newsSourceNumber)
-        if newsSourceNumber==99:
-            sys.exit()
-        if (newsSourceNumber >=len(newsSources)):
-            print ("Please select the index no less than "+ str(len(newsSources)))  
+        newsSourceNumber_str= "initialization for the inputcheck"
+        newsSourceNumber = "initialization for the inputcheck"
+        while(newsSourceNumber >=len(newsSources) or not newsSourceNumber_str.isdigit() ):
+            for i in xrange(len(newsSources)):
+                print ("["+str(i)+"]" +"\t" +newsSources[i])
+            print ("Please enter the index of the news source or press 99 to quit")
+            try:
+                newsSourceNumber_str=raw_input("News Source Number >>>> ")
+                newsSourceNumber=int(newsSourceNumber_str)
+            except ValueError:  
+                print ("That is not a valid News Source Number")
+            except AttributeError:
+                print ("That is not a valid News Source Number")
+            
+            if newsSourceNumber==99:
+                sys.exit()
+            if (newsSourceNumber >=len(newsSources)):
+                print ("Please select the index no less than "+ str(len(newsSources)))  
+        
         obj=NewsPulling(newsSources[newsSourceNumber])
         Articles=obj.BeautifyArticles();   
         while True:
