@@ -1,6 +1,6 @@
 import requests
-from configReader import ConfigurationReader
-from Extractor import *
+from config_reader import ConfigurationReader
+from extractor import *
 import textwrap
 
 
@@ -24,32 +24,33 @@ class ExtractMainContent:
         req = requests.get(self.url, headers=headers)
         return req.text
 
-    def AddExtractorList(self, extractor):
-        self.extractorlist.append(extractor)
+    # unused, but may be useful in the future
+    # def AddExtractorList(self, extractor):
+    #     self.extractorlist.append(extractor)
 
-    def Extract(self):
+    def _extract(self):
         self.ExtractStrategy = self.Mapping[self.Source]
         text = self.download()
-        return self.ExtractStrategy.ExtractionAlgo(text)
+        return self.ExtractStrategy.extractor(text)
 
     def beautify(self):
-        title, output = self.Extract()
+        title, output = self._extract()
         print("=" * (len(title) + 15))
         print("\t" + title)
         print("=" * (len(title) + 15))
 
         print((self.textWrap.fill(output)))  # wrap of the line
-        print("*********************************************************************************")
+        print("*" * 80)
         if len(output) == 0:
             print("Sorry :(")
-            print("There isn't much text on the site besides video/image. To further view the media post, Go to the below link")
+            print("There isn't much text on the site besides video/image. To "
+                  "further view the media post, Go to the below link")
             print(self.url)
-            print(
-                "*********************************************************************************")
+            print('*' * 80)
             print("\n\n")
 
     def save(self):
-        title, output = self.Extract()
+        title, output = self._extract()
 
         # Remove Chars not allowed in filenames
         for char in ['<', '>', "/", ":", '"', "\\", "|", "?", "*"]:

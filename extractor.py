@@ -3,13 +3,13 @@ from bs4 import BeautifulSoup
 
 class Extractor:
 
-    def ExtractionAlgo(self, text):
+    def extractor(self, text):
         pass
 
-    def TextExtractionAlgo(self, text, htmlelement, classname):
+    def _extraction_algo(self, text, htmlelement, classname):
         soup = BeautifulSoup(text, 'html.parser')
         title = soup.title.string
-        Result = []
+        result = []
         # print soup
         maincontent = soup.find_all(htmlelement, class_=classname)
         # print maincontent
@@ -18,9 +18,9 @@ class Extractor:
             for scripttag in scripttags:
                 scripttag.extract()
             # print content.text
-            Result.append(content.text)
-        Result = ''.join(Result)
-        return (title, Result)
+            result.append(content.text)
+        result = ''.join(result)
+        return (title, result)
 
 
 class HuffingtonPost(Extractor):
@@ -29,8 +29,8 @@ class HuffingtonPost(Extractor):
     def __init__(self):
         Extractor.__init__(self)
 
-    def ExtractionAlgo(self, text):
-        return Extractor.TextExtractionAlgo(self, text, "div", "content-list-component text")
+    def extractor(self, text):
+        return self._extraction_algo(text, "div", "content-list-component text")
 
 
 class NYT(Extractor):
@@ -39,8 +39,8 @@ class NYT(Extractor):
     def __init__(self):
         Extractor.__init__(self)
 
-    def ExtractionAlgo(self, text):
-        return Extractor.TextExtractionAlgo(self, text, "p", "story-body-text story-content")
+    def extractor(self, text):
+        return self._extraction_algo(text, "p", "story-body-text story-content")
 
 
 class BBC(Extractor):
@@ -49,8 +49,8 @@ class BBC(Extractor):
     def __init__(self):
         Extractor.__init__(self)
 
-    def ExtractionAlgo(self, text):
-        return Extractor.TextExtractionAlgo(self, text, "div", "story-body__inner")
+    def extractor(self, text):
+        return self._extraction_algo(text, "div", "story-body__inner")
 
 
 class BloomBerg(Extractor):
@@ -59,8 +59,8 @@ class BloomBerg(Extractor):
     def __init__(self):
         Extractor.__init__(self)
 
-    def ExtractionAlgo(self, text):
-        return Extractor.TextExtractionAlgo(self, text, "div", "body-copy")
+    def extractor(self, text):
+        return self._extraction_algo(text, "div", "body-copy")
 
 
 class Guardian(Extractor):
@@ -69,7 +69,7 @@ class Guardian(Extractor):
     def __init__(self):
         Extractor.__init__(self)
 
-    def ExtractionAlgo(self, text):
+    def extractor(self, text):
         soup = BeautifulSoup(text, 'html.parser')
         title = soup.title.string
         Result = []
@@ -94,7 +94,7 @@ class TheHindu(Extractor):
     def __init__(self):
         Extractor.__init__(self)
 
-    def ExtractionAlgo(self, text):
+    def extractor(self, text):
         soup = BeautifulSoup(text, 'html.parser')
         title = soup.title.string
         Result = []
@@ -119,7 +119,7 @@ class TimesOfIndia(Extractor):
     def __init__(self):
         Extractor.__init__(self)
 
-    def ExtractionAlgo(self, text):
+    def extractor(self, text):
         soup = BeautifulSoup(text, 'html.parser')
         title = soup.title.string
         Result = []
