@@ -2,12 +2,12 @@ from NewsPulling import NewsPulling
 from configReader import ConfigurationReader
 from ExtractMainContent import ExtractMainContent
 import sys
-import codecs
 
 
 def NewsSources():
     NewsSources = ConfigurationReader().GetWebsiteSupported()
     return NewsSources
+
 
 def App():
 
@@ -21,7 +21,7 @@ def App():
         newsSources = NewsSources()
         # Output News Sources
         for i in range(len(newsSources)):
-            print("[" + str(i+1) + "]" + "\t" + newsSources[i])
+            print("[" + str(i + 1) + "]" + "\t" + newsSources[i])
         print("\nPlease enter the index of the news source or type 'quit' to exit")
 
         # Validate Input
@@ -31,22 +31,23 @@ def App():
             if(newsSourceNumber.lower() == "quit"):
                 sys.exit()
             try:
-                newsSourceNumber = int(newsSourceNumber)-1
+                newsSourceNumber = int(newsSourceNumber) - 1
                 if(newsSourceNumber >= len(newsSources) or newsSourceNumber < 0):
-                    print("Please select an index between 1-" + str(len(newsSources)))
+                    print("Please select an index between 1-" +
+                          str(len(newsSources)))
                 # Good Input, break
                 else:
                     break
-            except ValueError:  
+            except ValueError:
                 print("That is not a valid News Source Number")
 
         while True:
 
-            obj=NewsPulling(newsSources[newsSourceNumber])
-            Articles=obj.BeautifyArticles();
-            print ("Do you want to read a story further? If yes, please select the number corresponding to the article")
-            print ("Enter 'back' to go back to the main menu")
-            print ("Press 'quit' to quit")
+            obj = NewsPulling(newsSources[newsSourceNumber])
+            Articles = obj.BeautifyArticles()
+            print("Do you want to read a story further? If yes, please select the number corresponding to the article")
+            print("Enter 'back' to go back to the main menu")
+            print("Press 'quit' to quit")
             articleNumber = input("Article No >>>> ")
             # Back
             if(articleNumber.lower() == "back"):
@@ -56,15 +57,16 @@ def App():
                 sys.exit()
 
             try:
-                articleNumber = int(articleNumber)-1
+                articleNumber = int(articleNumber) - 1
                 if (articleNumber >= len(Articles) or articleNumber < 0):
                     print("Please select an index between 1-" + str(len(Articles)))
 
                 else:
-                    print("\n"*5)
-                    extr=ExtractMainContent(newsSources[newsSourceNumber],Articles[articleNumber][2])
+                    print("\n" * 5)
+                    extr = ExtractMainContent(
+                        newsSources[newsSourceNumber], Articles[articleNumber][2])
                     extr.Beautify()
-                    print ("Do you want to save this article in file")
+                    print("Do you want to save this article in file")
                     YesorNo = str(input("Want to save? y/n >>> "))
                     if YesorNo.lower() == "yes" or YesorNo.lower() == "y":
                         extr.FileSave()
@@ -72,9 +74,8 @@ def App():
                     print("\n")
 
             except ValueError:
-                print ("That is not a valid Article Number")
+                print("That is not a valid Article Number")
 
-                        
 
-if __name__== "__main__":
-    App();
+if __name__ == "__main__":
+    App()
