@@ -8,7 +8,7 @@ class ExtractMainContent(object):
     def __init__(self, source, articleurl):
         self.extractorlist = [HuffingtonPost(), NYT(), BBC(
         ), BloomBerg(), Guardian(), TheHindu(), TimesOfIndia()]
-        websites = ConfigurationReader().GetWebsiteSupported()
+        websites = ConfigurationReader().websites_supported
         self.Mapping = {}
         for index, website in enumerate(websites):
             self.Mapping[website] = self.extractorlist[index]

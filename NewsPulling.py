@@ -1,19 +1,21 @@
-import requests
-from configReader import ConfigurationReader
-from requests import ConnectionError
 import sys
 
+import requests
+from requests import ConnectionError
 
-class NewsPulling(object):
+from configReader import ConfigurationReader
+
+
+class NewsPulling:
     """This class is used to pull news from the internet depending on the source specified """
 
     def __init__(self, newsSource):
         self.Source = newsSource
 
     def PullNews(self):
-        Configuration = ConfigurationReader()
-        self.__APIKey = Configuration.GetAPIKEY()
-        self.__Limit = Configuration.GetLimit()
+        config = ConfigurationReader()
+        self.__APIKey = config.APIKEY
+        self.__Limit = config.limit
         url = 'https://newsapi.org/v1/articles?source=' + \
             self.Source + '&sortBy=top&apiKey=' + self.__APIKey
         try:

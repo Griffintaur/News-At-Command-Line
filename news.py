@@ -1,15 +1,16 @@
+import sys
+
 from NewsPulling import NewsPulling
 from configReader import ConfigurationReader
 from ExtractMainContent import ExtractMainContent
-import sys
 
 
-def NewsSources():
-    NewsSources = ConfigurationReader().GetWebsiteSupported()
-    return NewsSources
+def news_sources():
+    news_sources = ConfigurationReader().websites_supported
+    return news_sources
 
 
-def App():
+def main():
 
     # Cool Title/Banner
     print("=" * 40)
@@ -18,10 +19,10 @@ def App():
     print()
 
     while True:
-        newsSources = NewsSources()
+        sources = news_sources()
         # Output News Sources
-        for i in range(len(newsSources)):
-            print("[" + str(i + 1) + "]" + "\t" + newsSources[i])
+        for i in range(len(sources)):
+            print("[" + str(i + 1) + "]" + "\t" + sources[i])
         print("\nPlease enter the index of the news source or type 'quit' to exit")
 
         # Validate Input
@@ -32,9 +33,9 @@ def App():
                 sys.exit()
             try:
                 newsSourceNumber = int(newsSourceNumber) - 1
-                if(newsSourceNumber >= len(newsSources) or newsSourceNumber < 0):
+                if(newsSourceNumber >= len(sources) or newsSourceNumber < 0):
                     print("Please select an index between 1-" +
-                          str(len(newsSources)))
+                          str(len(sources)))
                 # Good Input, break
                 else:
                     break
@@ -43,7 +44,7 @@ def App():
 
         while True:
 
-            obj = NewsPulling(newsSources[newsSourceNumber])
+            obj = NewsPulling(sources[newsSourceNumber])
             Articles = obj.BeautifyArticles()
             print("Do you want to read a story further? If yes, please select the number corresponding to the article")
             print("Enter 'back' to go back to the main menu")
@@ -64,7 +65,7 @@ def App():
                 else:
                     print("\n" * 5)
                     extr = ExtractMainContent(
-                        newsSources[newsSourceNumber], Articles[articleNumber][2])
+                        sources[newsSourceNumber], Articles[articleNumber][2])
                     extr.Beautify()
                     print("Do you want to save this article in file")
                     YesorNo = str(input("Want to save? y/n >>> "))
@@ -78,4 +79,4 @@ def App():
 
 
 if __name__ == "__main__":
-    App()
+    main()
