@@ -35,9 +35,9 @@ We welcome your contributions. Please feel free to fork the code, play with it, 
 Please [open an issue on GitHub](https://github.com/Griffintaur/News-At-Command-Line/issues/new) if you'd like to report a bug or request a feature.  
 
 # ScreenShot
- ![Input1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/Images/screenshot1.JPG)
+ ![Input1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/News/Images/screenshot1.JPG)
 
-  ![Ouput1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/Images/snapshot2.JPG)
+  ![Ouput1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/News/Images/snapshot2.JPG)
 
 ## License
 The code is released under MIT license and free to use.
