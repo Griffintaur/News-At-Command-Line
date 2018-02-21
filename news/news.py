@@ -4,8 +4,8 @@ import sys
 from enum import Enum
 
 from .news_pulling import NewsPulling
-from .config_reader import ConfigurationReader
 from .extract_main_content import ExtractMainContent
+from .reader_plugins.plugin_registration import sites
 
 
 class SelectionStatus(Enum):
@@ -15,7 +15,8 @@ class SelectionStatus(Enum):
 
 
 def news_sources():
-    news_sources = ConfigurationReader().websites_supported
+    news_sources = tuple(sites.keys())
+    print('news sources', news_sources)
     return news_sources
 
 

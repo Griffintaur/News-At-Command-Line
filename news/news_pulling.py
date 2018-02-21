@@ -5,21 +5,27 @@ from requests import ConnectionError
 
 from .config_reader import ConfigurationReader
 
+# TODO: Take reader plugin, read name from it for source in pull_news
+# TODO: Rewrite this entire module
+# TODO: Rewrite everything
+# TODO: make newsapi.org replaceable, especially since there is a v2 api
+
 
 class NewsPulling:
-    """This class is used to pull news from the internet depending on the source specified """
+    """Pull news from the internet depending on the source specified."""
 
-    def __init__(self, newsSource):
-        self.Source = newsSource
+    def __init__(self, source):
+        self.source = source
 
     def pull_news(self):
         config = ConfigurationReader()
-        self.__APIKey = config.APIKEY
         self.__Limit = config.limit
         url = 'https://newsapi.org/v1/articles?source=' + \
-            self.Source + '&sortBy=top&apiKey=' + self.__APIKey
+            self.source + '&sortBy=top&apiKey=' + config.APIKEY
+        print(url)
         try:
             req = requests.get(url)
+            print(req)
             if(req.status_code == 200):
                 return req
             else:

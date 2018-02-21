@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from os import path
 
-from __version__ import __version__
+from news.__version__ import __version__
 here = path.abspath(path.dirname(__file__))
 
 with open('README.md') as f:
