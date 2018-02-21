@@ -3,7 +3,7 @@ import sys
 import requests
 from requests import ConnectionError
 
-from config_reader import ConfigurationReader
+from .config_reader import ConfigurationReader
 
 
 class NewsPulling:

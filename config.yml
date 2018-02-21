@@ -7,9 +7,7 @@ WebsiteSupported:
     - the-hindu
     - the-times-of-india
 
-# Posts shown   
+# Posts shown
 Limit: 10
 
 Apikey: bda5818cc2af461e98330ccdf6fb9cbe
-
-    

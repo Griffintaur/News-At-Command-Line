@@ -3,9 +3,9 @@
 import sys
 from enum import Enum
 
-from news_pulling import NewsPulling
-from config_reader import ConfigurationReader
-from extract_main_content import ExtractMainContent
+from .news_pulling import NewsPulling
+from .config_reader import ConfigurationReader
+from .extract_main_content import ExtractMainContent
 
 
 class SelectionStatus(Enum):

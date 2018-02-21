@@ -1,7 +1,8 @@
 import requests
-from config_reader import ConfigurationReader
-from extractor import *
 import textwrap
+
+from .config_reader import ConfigurationReader
+from .extractor import *
 
 
 class ExtractMainContent:
