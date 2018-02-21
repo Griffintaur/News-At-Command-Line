@@ -1,4 +1,4 @@
-* ~~ Move all files to proper locations (./news) ~~
+* ~~Move all files to proper locations (./news)~~
 * Read config.yml from a default location, or ENV variable location
 * Test all the things
 * Update README (further updates)
