@@ -23,6 +23,9 @@ To install the module dependencies before running the application, simply naviga
  You can understand the rest while using it for the first time.
  ### To execute
     python Main.py
+ ### To install
+    python setup.py install
+    newsctl
  
 # Contributing
 We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests.

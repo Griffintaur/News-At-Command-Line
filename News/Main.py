@@ -57,6 +57,12 @@ def App():
                     extr.FileSave()
                     
 
-if __name__== "__main__":
+
+
+
+def Main():
     sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-    App();
+    App()
+
+if __name__ == '__main__':
+    Main()
