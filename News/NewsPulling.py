@@ -33,6 +33,10 @@ class NewsPulling(object):
     
     def JsonRead(self):
         req=self.PullNews()
+        # indicate if we need to convert to utf-8
+        needsconversion = False
+        if req.encoding != 'utf-8':
+            needsconversion = True
         req=req.json()
         articles=req['articles']
         noofarticles=len(articles)
@@ -43,13 +47,22 @@ class NewsPulling(object):
         for i in xrange(maxarticles):
             article=articles[i]
             #print article
-            description=article['description']
-            #print description
-            title=article['title']
-            Article_url=article['url']
-            DateofPublication=article['publishedAt']
-            Author=article['author']
-            FilteredArticles.append([description,title,Article_url,DateofPublication,Author])
+            if needsconversion:
+                description=unicode(article['description'], 'utf-8')
+                #print description
+                title=unicode(article['title'], 'utf-8')
+                Article_url=unicode(article['url'], 'utf-8')
+                DateofPublication=unicode(article['publishedAt'], 'utf-8')
+                Author=unicode(article['author'], 'utf-8')
+                FilteredArticles.append([description,title,Article_url,DateofPublication,Author])
+            else:
+                description=article['description']
+                #print description
+                title=article['title']
+                Article_url=article['url']
+                DateofPublication=article['publishedAt']
+                Author=article['author']
+                FilteredArticles.append([description,title,Article_url,DateofPublication,Author])
         return FilteredArticles
             
         #jsondict=json.load(req.json())

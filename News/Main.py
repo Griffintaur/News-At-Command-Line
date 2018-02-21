@@ -43,13 +43,19 @@ def App():
             articleNumber=int(articleNumber)
             if articleNumber==99 :
                 sys.exit()
-            if articleNumber==66 :
+            elif articleNumber==66 :
                 break
-            if (articleNumber >= len(Articles)):
+            elif (articleNumber >= len(Articles)):
                 print ("Please select the index no less than "+ str(len(Articles)))
             #print Articles[articleNumber][2]
-            extr=ExtractMainContent(newsSources[newsSourceNumber],Articles[articleNumber][2])
-            extr.Beautify()
+            else:
+                extr=ExtractMainContent(newsSources[newsSourceNumber],Articles[articleNumber][2])
+                extr.Beautify()
+                print ("Do you want to save this article in file")
+                YesorNo = int(raw_input("Press 1 to save else press 0 to continue >>> "))
+                if YesorNo == 1:
+                    extr.FileSave()
+                    
 
 
 
