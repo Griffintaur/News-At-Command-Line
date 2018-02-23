@@ -5,11 +5,6 @@ from requests import ConnectionError
 
 from .config_reader import ConfigurationReader
 
-# TODO: Take reader plugin, read name from it for source in pull_news
-# TODO: Rewrite this entire module
-# TODO: Rewrite everything
-# TODO: make newsapi.org replaceable, especially since there is a v2 api
-
 
 class NewsPulling:
     """Pull news from the internet depending on the source specified."""
@@ -22,17 +17,16 @@ class NewsPulling:
         self.__Limit = config.limit
         url = 'https://newsapi.org/v1/articles?source=' + \
             self.source + '&sortBy=top&apiKey=' + config.APIKEY
-        print(url)
         try:
             req = requests.get(url)
             print(req)
-            if(req.status_code == 200):
+            if req.status_code == 200:
                 return req
             else:
-                print(
-                    "There is some issue in connecting to the internet. Please check your firewall or internet")
+                print("There is some issue in connecting to the internet."
+                      "Please check your firewall or internet")
         except ConnectionError as e:
-            print("A connection Attempt failed")
+            print("A connection attempt failed")
             print(e.message)
             sys.exit()
 
@@ -58,8 +52,8 @@ class NewsPulling:
                 Article_url = str(article['url'], 'utf-8')
                 DateofPublication = str(article['publishedAt'], 'utf-8')
                 Author = str(article['author'], 'utf-8')
-                FilteredArticles.append(
-                    [description, title, Article_url, DateofPublication, Author])
+                FilteredArticles.append([description, title, Article_url,
+                                         DateofPublication, Author])
             else:
                 description = article['description']
                 # print description
@@ -68,7 +62,8 @@ class NewsPulling:
                 DateofPublication = article['publishedAt']
                 Author = article['author']
                 FilteredArticles.append(
-                    [description, title, Article_url, DateofPublication, Author])
+                    [description, title, Article_url,
+                     DateofPublication, Author])
         return FilteredArticles
 
     def beautify_articles(self):

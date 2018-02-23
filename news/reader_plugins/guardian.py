@@ -5,6 +5,8 @@ from news.reader import Reader
 
 class Guardian(Reader):
     """class for Guardian parsing"""
+    source_name = 'the-guardian-uk'
+
     def extractor(self, text):
         soup = BeautifulSoup(text, 'html.parser')
         title = soup.title.string

@@ -5,6 +5,8 @@ from news.reader import Reader
 
 class TheHindu(Reader):
     """class for The Hindu parsing"""
+    source_name = 'the-hindu'
+
     def extractor(self, text):
         soup = BeautifulSoup(text, 'html.parser')
         title = soup.title.string

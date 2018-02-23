@@ -1,17 +1,11 @@
 import requests
 import textwrap
 
-from .config_reader import ConfigurationReader
 from .reader_plugins.plugin_registration import sites
-from .reader import Reader
 
 
 class ExtractMainContent:
     def __init__(self, source, articleurl):
-
-        self.mapping = {}
-        for index, website in enumerate(sites):
-            self.mapping[website] = self.extractorlist[index]
         self.source = source
         self.url = articleurl
         self.textWrap = textwrap.TextWrapper(
@@ -24,14 +18,9 @@ class ExtractMainContent:
         req = requests.get(self.url, headers=headers)
         return req.text
 
-    # unused, but may be useful in the future
-    # def AddExtractorList(self, extractor):
-    #     self.extractorlist.append(extractor)
-
     def _extract(self):
-        self.ExtractStrategy = self.mapping[self.source]
         text = self.download()
-        return self.ExtractStrategy.extractor(text)
+        return sites[self.source]().extractor(text)
 
     def beautify(self):
         title, output = self._extract()

@@ -5,6 +5,8 @@ from news.reader import Reader
 
 class TimesOfIndia(Reader):
     """class for Times of India parsing"""
+    source_name = 'the-times-of-india'
+
     def extractor(self, text):
         soup = BeautifulSoup(text, 'html.parser')
         title = soup.title.string
