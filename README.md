@@ -3,6 +3,7 @@
 
  Now you don't need to visit each news portal website separately to read their articles. Just use the tool and read the articles without even clicking a single mouse button.
 
+### Updates June 6, 2018:  Users can now choose to read news articles based on news source or topic.
 
 # Modules Requirements
 

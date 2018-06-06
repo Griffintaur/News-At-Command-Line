@@ -11,9 +11,10 @@ import yaml
 class ConfigurationReader():
     __APIKEY=None
     __WebsiteSupported=[]
+    __TopicsSupported=[]
     __Limit=None
     def __init__(self):
-        with open("config.yml", 'r') as ymlfile:
+        with open("/Users/Stormy/PycharmProjects/News-At-Command-Line/config.yml", 'r') as ymlfile:
             cfg = yaml.load(ymlfile)
         ConfigurationReader.__APIKEY=cfg['Apikey']
         #print ConfigurationReader.__APIKEY
@@ -21,6 +22,7 @@ class ConfigurationReader():
         #print ConfigurationReader.__Limit
         ConfigurationReader.__WebsiteSupported=cfg['WebsiteSupported']
         #print ConfigurationReader.__WebsiteSupported
+        ConfigurationReader.__TopicsSupported=cfg['TopicsSupported']
     @staticmethod    
     def GetAPIKEY():
         return ConfigurationReader.__APIKEY
@@ -32,5 +34,9 @@ class ConfigurationReader():
     @staticmethod
     def GetWebsiteSupported():
         return ConfigurationReader.__WebsiteSupported
+
+    @staticmethod
+    def GetTopicsSupported():
+        return ConfigurationReader.__TopicsSupported
     
     
