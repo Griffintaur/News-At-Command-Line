@@ -40,7 +40,7 @@ Please [open an issue on GitHub](https://github.com/Griffintaur/News-At-Command-
   ![Ouput1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/News/Images/snapshot2.JPG)
   
 # Support
-  [![Donate](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](paypal.me/kitabkalam/25)
+  [![Donate](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](https://www.paypal.me/kitabkalam/25usd)
 
 ## License
 The code is released under MIT license and free to use.
