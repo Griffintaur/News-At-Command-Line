@@ -38,6 +38,9 @@ Please [open an issue on GitHub](https://github.com/Griffintaur/News-At-Command-
  ![Input1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/News/Images/screenshot1.JPG)
 
   ![Ouput1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/News/Images/snapshot2.JPG)
+  
+# Support
+  [![Donate](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](paypal.me/kitabkalam/25)
 
 ## License
 The code is released under MIT license and free to use.
