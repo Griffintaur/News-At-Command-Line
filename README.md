@@ -30,16 +30,14 @@ To install the module dependencies before running the application, simply naviga
 # Contributing
 We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests.
  [MAIL me](anky.nits.cse@gmail.com) for any discussion on the project or contribution.
-
-# Support
-Please [open an issue on GitHub](https://github.com/Griffintaur/News-At-Command-Line/issues/new) if you'd like to report a bug or request a feature.  
-
+ 
 # ScreenShot
  ![Input1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/News/Images/screenshot1.JPG)
 
   ![Ouput1](https://raw.githubusercontent.com/Griffintaur/News-At-Command-Line/master/News/Images/snapshot2.JPG)
   
 # Support
+Please [open an issue on GitHub](https://github.com/Griffintaur/News-At-Command-Line/issues/new) if you'd like to report a bug or request a feature. 
   [![Donate](https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png)](https://www.paypal.me/kitabkalam/25usd)
 
 ## License
