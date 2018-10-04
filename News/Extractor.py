@@ -85,7 +85,7 @@ class Guardian(Extractor):
         return (title,Result)
     
 class TheHindu(Extractor):
-    """class for TheHindu parsing"""
+    """class for The Hindu parsing"""
     def __init__(self):
         Extractor.__init__(self)
         
@@ -107,7 +107,7 @@ class TheHindu(Extractor):
         return (title,Result)
     
 class TimesOfIndia(Extractor):
-    """class for TimesOfIndia parsing"""
+    """class for Times of India parsing"""
     def __init__(self):
         Extractor.__init__(self)
         
