@@ -10,6 +10,8 @@
 #Created on  Jul 20 11:43:52 2016
 
 #@author: Ankit Singh
+#Updated on June 6 2016
+#@author: Samantha Ryan
 
 
 WebsiteSupported:
@@ -22,11 +24,20 @@ WebsiteSupported:
     - the-guardian-uk
     - the-hindu
     - the-times-of-india
-   # - The WashingtonPost
-   # - TheNewyorkTimes
+    # - The WashingtonPost
+    # - TheNewyorkTimes
 
 #No of posts to be displayed in the one go    
 Limit: 10
+
+#Topics Supported Based on US News Sources
+TopicsSupported:
+    - business
+    - entertainment
+    - health
+    - science
+    - sports
+    - technology
 
 Apikey: bda5818cc2af461e98330ccdf6fb9cbe
 

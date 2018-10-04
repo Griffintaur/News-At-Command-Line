@@ -3,6 +3,9 @@
 Created on  Jul 24 21:42:05 2016-2017
 
 @author: Ankit Singh
+
+Updated on June 6 2016
+@author: Samantha Ryan
 """
 import requests
 from configReader import ConfigurationReader

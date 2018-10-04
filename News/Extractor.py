@@ -14,6 +14,7 @@ class Extractor(object):
     def TextExtractionAlgo(self,text,htmlelement,classname):
         soup=BeautifulSoup(text,'html.parser')
         title=soup.title.string
+
         Result=[]
         #print soup
         maincontent=soup.find_all(htmlelement, class_=classname)
@@ -27,7 +28,8 @@ class Extractor(object):
         Result=''.join(Result)
         return (title,Result)
     
-    
+
+
     
 class HuffingtonPost(Extractor):
     """class for Huffington Post parsing"""
