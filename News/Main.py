@@ -29,8 +29,9 @@ def App():
         if newsSourceNumber==99:
             sys.exit()
         if (newsSourceNumber >=len(newsSources)):
-            print ("Please select the index no less than "+ str(len(newsSources)))  
-        obj=NewsPulling(newsSources[newsSourceNumber])
+            print ("Please select the index no less than "+ str(len(newsSources)))
+        newsSource = newsSources[newsSourceNumber]
+        obj=NewsPulling(newsSource)
         Articles=obj.BeautifyArticles();   
         while True:
             print ("Do you want to read any story further? If yes, please select the number corresponding to the article")

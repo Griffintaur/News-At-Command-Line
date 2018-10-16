@@ -6,6 +6,7 @@ Created on  Jul 24 20:01:34 2016-2017
 """
 
 import requests
+import CricketScores
 from configReader import ConfigurationReader
 from requests import ConnectionError
 import sys
@@ -69,24 +70,27 @@ class NewsPulling(object):
         #print jsondict
         
     def BeautifyArticles(self):
-        self.Articles=self.JsonRead()
-        if self.Articles is None or len(self.Articles)==0:
-            print "No articles found"
-            sys.exit()
-        print "=================STORIES=================================="
-        for i in xrange(len(self.Articles)):
-            print "[" +str(i) +"]",
-           # print(sequence,end='') used for python 3.x
-            if self.Articles[i][1] is not None:
-                print "\t"+self.Articles[i][1]
-            if self.Articles[i][0] is not None:
-                print "\t"+self.Articles[i][0]
-            if self.Articles[i][4] is not None:
-                print "\t"+self.Articles[i][4]
-            if self.Articles[i][3] is not None:
-                print "\t"+self.Articles[i][3]+"\n"
-        print "***************************************************************"
-        return self.Articles 
+        if 'cricket' in self.Source.lower():
+            CricketScores.print_cricket_scores()
+        else:
+            self.Articles=self.JsonRead()
+            if self.Articles is None or len(self.Articles)==0:
+                print "No articles found"
+                sys.exit()
+            print "=================STORIES=================================="
+            for i in xrange(len(self.Articles)):
+                print "[" +str(i) +"]",
+               # print(sequence,end='') used for python 3.x
+                if self.Articles[i][1] is not None:
+                    print "\t"+self.Articles[i][1]
+                if self.Articles[i][0] is not None:
+                    print "\t"+self.Articles[i][0]
+                if self.Articles[i][4] is not None:
+                    print "\t"+self.Articles[i][4]
+                if self.Articles[i][3] is not None:
+                    print "\t"+self.Articles[i][3]+"\n"
+            print "***************************************************************"
+            return self.Articles
     
         
         
