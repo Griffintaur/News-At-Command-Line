@@ -19,7 +19,7 @@ class NewsPulling(object):
         Configuration = ConfigurationReader()
         self.__APIKey=Configuration.GetAPIKEY()
         self.__Limit=Configuration.GetLimit()
-        url='https://newsapi.org/v1/articles?source='+self.Source+'&sortBy=top&apiKey='+self.__APIKey
+        url='https://newsapi.org/v2/top-headlines?sources='+self.Source+'&sortBy=top&apiKey='+self.__APIKey
         try:
             req=requests.get(url)
             if(req.status_code==200):
