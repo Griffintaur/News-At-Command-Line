@@ -69,24 +69,5 @@ class NewsPulling:
         self.Articles = self.json_read()
         if self.Articles is None or len(self.Articles) == 0:
             print("No articles found")
-            sys.exit()
-        print("\n" + ("=" * 16) + " STORIES " + ("=" * 16))
-        for i in range(len(self.Articles)):
-            print("[" + str(i + 1) + "]", end=' ')
-            # Title
-            if self.Articles[i][1] is not None:
-                print("\t" + self.Articles[i][1])
-            # Summary
-            if self.Articles[i][0] is not None:
-                # Limit Summary Size
-                summary = self.Articles[i][0][:85] + \
-                    (self.Articles[i][0][85:] and '...')
-                print("\t" + summary)
-            # Author
-            if self.Articles[i][4] is not None:
-                print("\t" + self.Articles[i][4])
-            # Date
-            if self.Articles[i][3] is not None:
-                print("\t" + self.Articles[i][3] + "\n")
-        print("=" * 40)
+            sys.exit()        
         return self.Articles
