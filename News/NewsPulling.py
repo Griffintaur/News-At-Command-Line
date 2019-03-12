@@ -32,7 +32,7 @@ class NewsPulling(object):
                                                self.__ProxyPortNumber),
             }
         try:
-            req=requests.get(url, proxies=proxies)
+            req=requests.get(url,proxies=proxies)
             if(req.status_code==200):
                 return req
             else:

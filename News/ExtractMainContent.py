@@ -11,6 +11,7 @@ import textwrap
 
 class ExtractMainContent(object):
     def __init__(self,source,articleurl):
+        #import pdb; pdb.set_trace();
         self.extractorlist=[HuffingtonPost(),NYT(),BBC(),BloomBerg(),Guardian(),TheHindu(),TimesOfIndia()]
         websites=ConfigurationReader().GetWebsiteSupported()
         self.Mapping={}
@@ -23,7 +24,18 @@ class ExtractMainContent(object):
         
     def DownloadContent(self):
         headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
-        req=requests.get(self.url,headers=headers)
+        Configuration = ConfigurationReader()
+        self.__ProxyIP=Configuration.GetProxyIP()
+        self.__ProxyPortNumber=Configuration.GetProxyPortNumber()
+        proxies = {}
+        if self.__ProxyIP and self.__ProxyPortNumber:
+            proxies = {
+                'http': "http://{}:{}".format(self.__ProxyIP,
+                                              self.__ProxyPortNumber),
+                'https': "https://{}:{}".format(self.__ProxyIP,
+                                               self.__ProxyPortNumber),
+            }
+        req=requests.get(self.url,headers=headers,proxies=proxies)
         return req.text
     
     def AddExtractorList(self,extractor):
