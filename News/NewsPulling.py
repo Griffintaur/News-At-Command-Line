@@ -22,8 +22,7 @@ class NewsPulling(object):
         self.__Limit=Configuration.GetLimit()
         self.__ProxyIP=Configuration.GetProxyIP()
         self.__ProxyPortNumber=Configuration.GetProxyPortNumber()
-        import pdb; pdb.set_trace();
-        url = 'https://newsapi.org/v2/top-headlines?sources={}&sortBy=top&apiKey={}'.format(self.Source, self.__APIKey)
+        url='https://newsapi.org/v2/top-headlines?sources='+self.Source+'&sortBy=top&apiKey='+self.__APIKey
         proxies = {}
         if self.__ProxyIP and self.__ProxyPortNumber:
             proxies = {
