@@ -20,9 +20,19 @@ class NewsPulling(object):
         Configuration = ConfigurationReader()
         self.__APIKey=Configuration.GetAPIKEY()
         self.__Limit=Configuration.GetLimit()
+        self.__ProxyIP=Configuration.GetProxyIP()
+        self.__ProxyPortNumber=Configuration.GetProxyPortNumber()
         url='https://newsapi.org/v2/top-headlines?sources='+self.Source+'&sortBy=top&apiKey='+self.__APIKey
+        proxies = {}
+        if self.__ProxyIP and self.__ProxyPortNumber:
+            proxies = {
+                'http': "http://{}:{}".format(self.__ProxyIP,
+                                              self.__ProxyPortNumber),
+                'https': "https://{}:{}".format(self.__ProxyIP,
+                                               self.__ProxyPortNumber),
+            }
         try:
-            req=requests.get(url)
+            req=requests.get(url, proxies=proxies)
             if(req.status_code==200):
                 return req
             else:

@@ -26,6 +26,8 @@ To install the module dependencies before running the application, simply naviga
  ### To install
     python setup.py install
     newsctl
+ ### If you are accessing the web through a proxy service:
+    Please add the proxy IP and port number to the config.yml file
  
 # Contributing
 We welcome your contributions. Please feel free to fork the code, play with it, make some patches and send us pull requests.
