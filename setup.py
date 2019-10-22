@@ -17,7 +17,7 @@ setup(
     install_requires=[
 		'bs4==0.0.1',
 		'PyYAML==3.12',
-		'requests==2.18.4',
+		'requests==2.20.0',
     ],
 
     license='MIT',
