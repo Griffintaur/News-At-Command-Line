@@ -16,7 +16,7 @@ setup(
 
     install_requires=[
 		'bs4==0.0.1',
-		'PyYAML==3.12',
+		'PyYAML==5.1',
 		'requests==2.20.0',
     ],
 
