@@ -21,15 +21,17 @@ def App():
         for i in xrange(len(newsSources)):
             print ("["+str(i)+"]" +"\t" +newsSources[i])
         print ("Please enter the index of the news source or press 99 to quit")
+        newsSourceNumber = raw_input("News Source Number >>>> ")
         try:
-            newsSourceNumber=raw_input("News Source Number >>>> ")
+            newsSourceNumber = int(newsSourceNumber)
         except ValueError:  
             print ("That is not a valid News Source Number")
-        newsSourceNumber=int(newsSourceNumber)
+            continue
         if newsSourceNumber==99:
             sys.exit()
         if (newsSourceNumber >=len(newsSources)):
             print ("Please select the index no less than "+ str(len(newsSources)))
+            continue
         newsSource = newsSources[newsSourceNumber]
         obj=NewsPulling(newsSource)
         Articles=obj.BeautifyArticles();   
