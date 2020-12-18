@@ -8,6 +8,7 @@ import requests
 from configReader import ConfigurationReader
 from Extractor import *
 import textwrap
+import os.path
 
 class ExtractMainContent(object):
     def __init__(self,source,articleurl):
@@ -50,6 +51,10 @@ class ExtractMainContent(object):
 
     def FileSave(self):
         title,output=self.Extract()
+        titleName = title+".txt"
+        if(os.path.isfile(titleName)):
+            print "File already saved!\n"
+            return
         article_file = open(title+".txt","w+")
         article_file.write(output.encode('utf-8'))
         article_file.close()
