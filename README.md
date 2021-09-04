@@ -44,3 +44,5 @@ Please [open an issue on GitHub](https://github.com/Griffintaur/News-At-Command-
 ## License
 The code is released under MIT license and free to use.
 
+## Status
+The project is not actively maintained. I am happy to accept PRs on the project.
